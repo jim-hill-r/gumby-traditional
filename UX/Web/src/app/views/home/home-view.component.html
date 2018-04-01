@@ -1,0 +1,6 @@
+<activity [edit]="true"></activity>
+
+<span *ngFor="let activity of activities; let i = index">
+  <activity [activity]="activity"></activity>
+  <advertisement *ngIf="i%10==0"> </advertisement>
+</span>

@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-subtitle>
+    {{activity.timestamp | date:'medium'}}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div id="comments">
+      <div *ngIf="edit" style="text-align:center">
+          <span class="comments-area">
+            <mat-form-field class="comments-bar">
+              <input matInput placeholder="What have you been up to?" />
+            </mat-form-field>
+          </span>
+          <button mat-button (click)="saveActivity()"> SHARE </button>
+      </div>
+      <div *ngIf="!edit">
+        <p>
+          {{activity.comments}}
+        </p>
+      </div>
+    </div>
+
+    <div *ngFor="let detail of activity.details">
+      <div id="climb" *ngIf="detail.type == 'CLIMB'">
+        <climb [id]="detail.id" [edit]="edit"> </climb>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
